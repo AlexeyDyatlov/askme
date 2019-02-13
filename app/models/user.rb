@@ -19,6 +19,11 @@ class User < ApplicationRecord
   validates_confirmation_of :password
 
   before_save :encrypt_password
+  before_validation :username_downcase
+
+  def username_downcase
+    self.username.downcase!
+  end
 
   def encrypt_password
     if self.password.present?
