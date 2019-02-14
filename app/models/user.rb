@@ -4,16 +4,17 @@ class User < ApplicationRecord
   
   attr_accessor :password
 
-  ITERATIONS = 20000
+  ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
+  USERNAME_REGEX = /\A[a-z\_0-9]*\z/i
 
   has_many :questions
 
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
-  validates :email, email_format: { message: "doesn't look like an email address" }
-  validates :username, :length => { :maximum => 40 }
-  validates_format_of :username, :with => /\A[a-z\_0-9]*\z/i
+  validates :email, email_format: true
+  validates :username, length: { maximum: 40 }
+  validates_format_of :username, with: USERNAME_REGEX
 
   validates_presence_of :password, on: :create
   validates_confirmation_of :password
@@ -22,7 +23,7 @@ class User < ApplicationRecord
   before_validation :username_downcase
 
   def username_downcase
-    self.username.downcase!
+    self.username.downcase! if self.username.present?
   end
 
   def encrypt_password
