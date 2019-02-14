@@ -23,7 +23,7 @@ class User < ApplicationRecord
   before_validation :username_downcase
 
   def username_downcase
-    self.username.downcase! if self.username.present?
+    self.username.downcase! if username.present?
   end
 
   def encrypt_password
