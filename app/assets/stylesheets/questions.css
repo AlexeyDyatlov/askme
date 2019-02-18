@@ -6,6 +6,10 @@
   background: white;
 }
 
+.question-quantity {
+  padding: 1em;
+}
+
 .question-content {
   padding: 10px 15px;
 }
