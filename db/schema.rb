@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2019_02_14_101700) do
     t.string "password_hash"
     t.string "password_salt"
     t.string "avatar_url"
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
