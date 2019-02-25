@@ -30,8 +30,8 @@
       </div>
       
       <div class="form-field">
-        <%= f.label 'Цвет фона(hex-format или color)', class: 'form-label' %>
-        <%= f.text_field :color, class: 'form-text-field' %>
+        <%= f.label 'Цвет фона', class: 'form-label' %>
+        <%= f.color_field :color, value: user_color(@user) %>
       </div>
 
       <div class="buffer-top-large buffer-bottom">

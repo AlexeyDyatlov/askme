@@ -1,4 +1,4 @@
-<div class="user-header text-center" style="background-color: <%= @user.color %>">
+<div class="user-header text-center" style="background: <%= user_color(@user) %>">
   <h1 class="title-medium">
     <%= @user.name %>
   </h1>
@@ -9,7 +9,7 @@
 
   <% if current_user == @user %>
     <div class="question-actions">
-      <%= link_to fa_icon('trash-o'), user_path(@user), method: :delete, data: {confirm: 'Вы уверены?'} %>
+      <%= link_to fa_icon('trash-o'), user_path(@user), method: :delete, data: {confirm: 'Точно удалить?'} %>
     </div>
   <% end %>
 
