@@ -9,13 +9,9 @@ gem 'jquery-rails'
 gem 'validates_email_format_of'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rails_12factor'
-
-group :production do
-  gem 'pg'
-end
+gem 'pg'
 
 group :development, :test do
-  gem 'sqlite3', '~> 1.3', '< 1.4'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 

@@ -7,14 +7,6 @@ module ApplicationHelper
     end
   end
 
-  def question_author(question)
-    if question.author.present?
-      question.author.username
-    else
-      "Аноним"
-    end
-  end
-
   def user_color(user)
     if user.color.present?
       user.color
