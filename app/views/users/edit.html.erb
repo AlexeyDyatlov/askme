@@ -21,7 +21,7 @@
       <div class="form-field">
         <%= f.label 'Ваше имя', class: 'form-label' %>
         <%= f.text_field :name, class: 'form-text-field' %>
-      </div>
+      </div>z
 
 
       <div class="form-field">
@@ -33,6 +33,12 @@
         <%= f.label 'Цвет фона', class: 'form-label' %>
         <%= f.color_field :color, value: user_color(@user) %>
       </div>
+
+      <% if current_user == @user %>
+        <div class="form-action buffer-top">
+          <%= link_to 'Удалить профиль', user_path(@user), method: :delete, data: {confirm: 'Точно удалить?'}, class: 'button button-delete' %>
+        </div>
+      <% end %>
 
       <div class="buffer-top-large buffer-bottom">
         Если не хотите менять пароль — оставьте эти поля пустыми!
