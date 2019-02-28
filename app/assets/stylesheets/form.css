@@ -11,6 +11,11 @@
   min-height: 100px;
 }
 
+.form-delete {
+  float: right;
+  margin-top: -29px;
+}
+
 .form-textarea,
 .form-text-field {
   width: 100%;
