@@ -1,7 +1,6 @@
 require 'openssl'
 
 class User < ApplicationRecord
-
   attr_accessor :password
 
   ITERATIONS = 20_000
@@ -15,9 +14,8 @@ class User < ApplicationRecord
   validates :email, email_format: true
   validates :username, length: { maximum: 40 }
   validates :avatar_url, url: true, on: :update, allow_blank: true
-  validates :color, format: { with: /\A#([\da-f]{3}){1,2}\z/ }, on: :update, allow_blank: true
+  validates :color, format: { with: /\A#([\da-f]{3}){1,2}\z/ }, allow_blank: true
   validates_format_of :username, with: USERNAME_REGEX
-
   validates_presence_of :password, on: :create
   validates_confirmation_of :password
 

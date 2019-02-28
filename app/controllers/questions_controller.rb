@@ -1,7 +1,6 @@
 class QuestionsController < ApplicationController
-
   before_action :load_question, only: [:show, :edit, :update, :destroy]
-  before_action :autorize_user, except: [:create]
+  before_action :authorize_user, except: [:create]
 
   def edit
   end
@@ -17,7 +16,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /questions/1
   def update
     if @question.update(question_params)
       redirect_to user_path(@question.user), notice: 'Вопрос сохранен'
@@ -35,20 +33,20 @@ class QuestionsController < ApplicationController
 
   private
 
-    def load_question
-      @question = Question.find(params[:id])
-    end
+  def load_question
+    @question = Question.find(params[:id])
+  end
 
-    def autorize_user
-      reject_user unless @question.user == current_user
-    end
+  def authorize_user
+    reject_user unless @question.user == current_user
+  end
 
-    def question_params
-      if current_user.present? &&
-        params[:question][:user_id].to_i == current_user.id
-        params.require(:question).permit(:user_id, :text, :answer)
-      else
-        params.require(:question).permit(:user_id, :text)
-      end
+  def question_params
+    if current_user.present? &&
+      params[:question][:user_id].to_i == current_user.id
+      params.require(:question).permit(:user_id, :text, :answer)
+    else
+      params.require(:question).permit(:user_id, :text)
     end
+  end
 end
