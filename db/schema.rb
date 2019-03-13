@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2019_02_25_201817) do
     t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "author_id"
+    t.bigint "user_id"
+    t.bigint "author_id"
     t.index ["author_id"], name: "index_questions_on_author_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
@@ -36,7 +36,10 @@ ActiveRecord::Schema.define(version: 2019_02_25_201817) do
     t.string "password_salt"
     t.string "avatar_url"
     t.string "color"
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "questions", "users"
+  add_foreign_key "questions", "users", column: "author_id"
 end
