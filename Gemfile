@@ -11,6 +11,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rails_12factor'
 gem 'pg'
 gem 'validate_url'
+gem 'recaptcha', require: 'recaptcha/rails'
 
 
 group :development, :test do

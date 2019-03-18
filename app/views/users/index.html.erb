@@ -9,4 +9,13 @@
    	  </div>
     </div>
   <% end %>
+  <div class="buffer-both">
+    <h1 class="title-medium">Хэштеги:</h1>
+  </div>
+
+  <% @hashtags.each do |hashtag| %>
+    <span class="hashtag-link">
+      <%= link_to hashtag.name, hashtag_url(hashtag) %>
+    </span>
+  <% end %>
 </div>
